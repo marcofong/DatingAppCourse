@@ -6,10 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingAppCourse.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UsersController(DataContext dataContext) : ControllerBase
+    public class UsersController(DataContext dataContext) : BaseApiController
     {
+        [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
         {
             var users = await dataContext.Users.ToListAsync();
